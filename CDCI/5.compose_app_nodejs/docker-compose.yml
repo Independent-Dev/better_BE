@@ -1,0 +1,8 @@
+version: "3"  # docker compose 버전
+service: # 이곳에 실행하려는 컨테이너들을 정
+  redis-server:
+    image: "redis"
+  node-app:
+    build: ./
+    ports:
+      - "5000:8080"
