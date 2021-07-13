@@ -83,5 +83,22 @@
   * 개발서버와 다른 운영서버를 써야 하는 이유
     * 개발 서버에는 소스를 변경할 경우 자동으로 전체 앱을 다시 빌드해서 변경 소스를 반영해주는 것과 같이 개발 환경에 특화된 기능들이 있음.
     * 운영에서는 그런 기능들이 없어 더 가볍고, 빠른 Nginx를 사용.
+    
+* 7강 간단한 어플을 실제로 배포해보기(테스트 & 배포 부분)
+  * 흐름(Github & Travis CI & AWS)
+    * Github 원격저장소에 push
+    * Github master 저장소에 소스가 Push되면 Travis CI에게 소스가 Push되었음을 캐치
+    * Travis CI는 업데이트된 소스를 Github에서 가지고 옴
+    * Github에서 가져온 소스의 테스트 소스를 실행
+    * 테스트 코드 실행 후 테스트가 성공하면 AWS 같은 호스팅 사이트로 보내서 배
+  * .travis.yml 생성: Github에서 Travis CI로 소스를 어떻게 전달시킬 것이며 전달받은 것을 어떻게 테스트하며, 그 테스트가 성공했을 때 어떻게 AWS에 전달해서 배포를 할 것인지 설정해주는 파일.
+  * AWS 준비
+    * EC2(Elastic Compute Cloud): 컴퓨터 임대 + OS와 웹 서비스를 위한 서비스를 설치하여 사용(웹서버, DB 등). 한 대의 컴퓨터를 인스턴스 객체라고 함. 
+    * EB(Elastic Beanstalk): EB라는 것은 EC2 인스턴스, 데이터베이스 등을 관리해주는 일종의 환경. 손쉽게 배포할 수 있고, 모든 것을 다 세밀하게 컨트롤(용량 프로비저닝, 부하 분산, Auto-Scaling, 애플리케이션 상태 모니터링 등) 할 수 있는 일종의 paas
+      * Elastic Beanstalk 생성 시에 S3 버킷도 같이 생성됨. 
+      * 트래픽이 많아지면 자동으로 EC2 인스턴스가 늘어남!
+  * Travis CI의 AWS 접근을 위한 API 생성
+    * IAM(Identity And Management) user 생성
+    * API key를 Travis CI 및 .
 * 참조
   * [도커 강의](https://www.inflearn.com/course/%EB%94%B0%EB%9D%BC%ED%95%98%EB%A9%B0-%EB%B0%B0%EC%9A%B0%EB%8A%94-%EB%8F%84%EC%BB%A4-ci/dashboard)
