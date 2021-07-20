@@ -17,7 +17,19 @@ def google():
     result = requests.get('https://www.google.com')
     return result.text
 
-@app.
+@app.route('/test', methods=["GET", "POST", "PUT", "DELETE"])
+def test():
+    if request.method == "POST":
+        data = request.get_json()  # post로 보낸 경우에는 이러한 방식으로 데이터를 가져올 수 있음!!
+    if request.method == "GET":
+        data = request.args.get('data', None)  # get으로 request한 경우에는 이렇게 써야함!!
+    if request.method == "PUT":
+        pass
+    if request.method == "DELETE":
+        pass
+
+    return make_response(jsonify(status=True), 200)
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port="8081", debug=True)
