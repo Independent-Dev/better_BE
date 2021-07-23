@@ -24,3 +24,8 @@ def generatte_email_and_pw(domain=None, email_prefix=None):
     logger.debug(f"email and pw: {random_info}")
 
     return random_info
+
+
+def generate_rand_str(length=10, prefix='', suffix=''):
+    rand_str = ''.join(random.choices(string.ascii_lowercase, k=length))
+    return prefix + rand_str + suffix

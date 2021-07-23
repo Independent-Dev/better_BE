@@ -1,6 +1,7 @@
 import pytest, logging as logger
 from app.src.utilities.requestUtility import RequestUtility
 
+@pytest.mark.customers
 @pytest.mark.tcid30
 def test_get_all_customers():
     req_helper = RequestUtility()
