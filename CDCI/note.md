@@ -23,18 +23,24 @@
       * ex: docker ps --format 'table{{.Names}}\t{{.Image}}' 
       
   * 생명주기 관련 명령어
-    * 생명주기: 생성 -> 시작 -> 실행 -> 중지 -> 삭제
+    * 생명주기: 생성(create) -> 시작(start) -> 실행 -> 중지 -> 삭제
     * docker create image_name: 이미지의 파일 스냅샷을 컨테이너 하드디스크에 적재
     * docker start container_id/container_name: 시작 명령어 실행 
       * docker start -a adfqreq와 같은 식으로 -a 옵션(attach)을 추가해주어야 실행 결과를 출력함. 
-    * docker stop cont_id/cont_name: 하던 작업을 마무리하고(gracefully) stop
-    * docker kill: 어떠한 것도 기다리지 않고 stop
+        * give me any ouput that is coming from that thing
+    * docker stop cont_id/cont_name: 하던 작업을 마무리하고(gracefully) stop(SIGTERN 시스템콜 호출)
+    * docker kill: 어떠한 것도 기다리지 않고 stop(SIGKILL 시스템콜 호출)
     * docker rm container_id/container_name: 컨테이너 삭제 명령어. 중지한 이후에 삭제할 수 있음.
       * docker rm \`docker ps -a -q\`: 모든 컨테이너 삭제
-    * docker system prune: 한번에 컨테이너, 이미지, 네트워크 모두 삭제하고 싶을 때 쓰는 명령어. 실행 중인 컨테이너에는 적용되지 않기에 맘 편하게 쓸 수 있음.  
+      * 중지한 container는 start 명령을 통해 다시 실행될 수 있는데 이때 initializing command는 대체할 수 없음.
+        * docker start example_container_id xxxxx는 재실행할 때에는 불가능하다는 것임
+    * docker system prune: 한번에 컨테이너, 이미지(cache된 것들), 네트워크 모두 삭제하고 싶을 때 쓰는 명령어. 실행 중인 컨테이너에는 적용되지 않기에 맘 편하게 쓸 수 있음.  
   * docker exec cont_id/cont_name command: 이미 실행 중인 컨테이너에 명령어 전달
-    * -it: interactive한 terminal 프로세스를 얻을 수 있게 함. // 사실 이 부분 정확하게는 잘 모르겠음. 
+    * -it: interactive한 terminal 프로세스를 얻을 수 있게 함.
+      * 더 정확하게 말하면 -it는 -i와 -t가 합쳐진 것. 여기서 -i는 리눅스 프로세스의 커뮤니케이션 채널 중 하나인 stdin을 가리키는 것으로 내가 타이핑하는 모든 것이 해당 프로세스의 stdin으로 연결된다는 것을 의미함. -t는 출력 명령이 더 예쁘게(?, nicely formatted) 보이도록 만들어주는 것. 
       * docker exec -it 497caccdfb0d sh와 같이 마지막 명령어로 shell을 실행시킬 수도 있음.
+  * docker log: getting a record of all the logs that have been emitted from that container.
+    * 이 명령어를 사용하면 굳이 cntainer를 재실행하지 않고도 결과를 출력할 수 있음.
 
 * 3강 직접 도커 이미지를 만들어보기
   * 도커 이미지를 생성하는 순서
