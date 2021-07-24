@@ -41,6 +41,10 @@
 - 그 외 내가 모르는 것
   - setuptools 모듈이 무엇인지, 이건 어떻게 사용해야 하는 것인지
     - python setup.py install or develop은 어떤 의미가 있는 것인가.
+      - shell을 닫은 상황에서 다시 해당 프로젝트 내의 패키지를 import하고 있는 파일을 실행하려고 하면 아래와 같은 에러가 뜸.
+        - ModuleNotFoundError: No module named 'app.src.utilities'
+      - 이 상황에서 python setup.py develop을 해주면 더 이상 그와 같은 명령어 뜨지 않음. 
+      - [이 자료](http://www.flowdas.com/blog/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-setuptools/)를 봐도 뭔 소린지 잘 모르겠음.
   - mac 환경변수 세팅 방법: 이제 정말로 확실하게 알아둘 필요가 있음.
     - 환경변수에는 여러 종류가 있는 것으로 알고 있는데, 각각에 대해서 잘 알 필요가 있음. 
     - export KEY=VALUE

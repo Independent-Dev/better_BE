@@ -14,7 +14,6 @@ class RequestUtility:
         self.auth = OAuth1(wc_creds['wc_key'], wc_creds['wc_secret'])
 
     def assert_status_code(self):
-        breakpoint()
         assert self.rs_status_code == self.expected_status_code, f"Bad Status code. Expected {self.expected_status_code}, Actual status code: {self.rs_status_code}, URL: {self.url}, Response Json: {self.rs_json}"
     
     def post(self, endpoint, payload=None, headers=None, expected_status_code=201):
