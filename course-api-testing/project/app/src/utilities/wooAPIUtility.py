@@ -38,7 +38,16 @@ class WooAPIUtility:
         self.assert_status_code()
 
         return self.rs_json
+    
+    def put(self, endpoint, params=None, expected_status_code=200):
+        rs_api = self.wcapi.put(endpoint, params)
+        self.rs_status_code = rs_api.status_code
+        self.expected_status_code = expected_status_code
+        self.url = endpoint
+        self.rs_json = rs_api.json()
+        self.assert_status_code()
 
+        return self.rs_json
 if __name__ == '__main__':
     rs_api = WooAPIUtility().get('products')
     breakpoint()

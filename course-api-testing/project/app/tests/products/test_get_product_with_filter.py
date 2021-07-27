@@ -15,7 +15,6 @@ class TestListProductWithFilter:
 
         # make the call
         payload = {'after': after_created_date}
-        breakpoint()
         rs_api = ProductsHelper().call_list_products(payload)
         
         # get data from db

@@ -31,3 +31,9 @@ class OrdersHelper:
         line_details = order_dao.get_order_items_details(line_info[0]['order_item_id'])
 
         # breakpoint()
+    
+    def update_order(self, order_id, payload):
+        return self.woo_helper.put(f'orders/{order_id}', params=payload)
+    
+    def retrieve_order(self, order_id):
+        return self.woo_helper.get(f'orders/{order_id}')

@@ -1,5 +1,4 @@
 - Pytest
-
   - testing framework for python
     - API testing, UI testing, Unit testing
   - test options
@@ -22,11 +21,9 @@
       - [참고](https://pypi.org/project/pytest-html/)
 
 - Section4
-
   - setup.py
 
 - Tools
-
   - WordPress:
     - [more info](https://www.thewordcracker.com/basic/wordpress-introduction/)
   - MAMP(Mac, Apache, MySQL, PHP)
