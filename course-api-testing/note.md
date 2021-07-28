@@ -35,6 +35,12 @@
   - woocommerce, woocommerce api
   - sublime
 
+- test를 위해 필요한 것
+  - 가상환경 실행: source venv/bin/activate
+  - 환경변수 세팅: source env.sh
+  - python setup.py develop
+  - "local" 실행
+
 - 그 외 내가 모르는 것
   - setuptools 모듈이 무엇인지, 이건 어떻게 사용해야 하는 것인지
     - python setup.py install or develop은 어떤 의미가 있는 것인가.
